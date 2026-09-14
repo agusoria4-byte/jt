@@ -11,6 +11,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
@@ -42,6 +45,11 @@ h1, h2, h3, h4 {
 }
 .text-center { text-align: center; }
 .mt-2 { margin-top: 10px; }
+
+/* FIX NAVIGATION SCROLL OFFSETS */
+#servicios, #equipo, #trabajar, #contacto {
+    scroll-margin-top: 90px;
+}
 
 /* BOTONES */
 .btn {
@@ -117,7 +125,7 @@ h1, h2, h3, h4 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: -60px;
+    margin-top: -110px;
 }
 
 .eyebrow { color: var(--gold-dark); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
@@ -147,7 +155,16 @@ h1, h2, h3, h4 {
 .services-carousel-wrapper { display: flex; align-items: center; justify-content: center; position: relative; max-width: 1400px; margin: 0 auto; }
 .arrow { background: none; border: none; font-size: 2.5rem; color: var(--black); cursor: pointer; padding: 0 5px; transition: color 0.3s; z-index: 10; }
 .arrow:hover { color: var(--gold); }
-.services-track-container { display: flex; gap: 30px; overflow-x: auto; scroll-behavior: smooth; padding: 20px 10px 40px 10px; -ms-overflow-style: none; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.services-track-container { 
+    display: flex; 
+    gap: 30px; 
+    overflow-x: auto; 
+    padding: 20px 10px 40px 10px; 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; 
+}
 .services-track-container::-webkit-scrollbar { display: none; }
 .service-card { min-width: 320px; height: 420px; position: relative; perspective: 1000px; flex-shrink: 0; scroll-snap-align: center; }
 .card-inner { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; }
@@ -184,7 +201,7 @@ h1, h2, h3, h4 {
 .coverage-right { flex: 1.2; height: 100%; display: flex; padding: 0; }
 .coverage-video { width: 100%; height: 100%; max-width: none; aspect-ratio: auto; object-fit: cover; border-radius: 0px; box-shadow: none; }
 
-/* NUESTRO EQUIPO (GRILLA ACORDEÓN) */
+/* NUESTRO EQUIPO (GRILLA ACORDEÓN Y CARRUSEL) */
 .team-section { padding: 40px 0; background-color: var(--white); }
 
 .process-grid {
@@ -198,90 +215,25 @@ h1, h2, h3, h4 {
 .process-info { text-align: left; }
 .process-info .section-subtitle { margin-left: 0; margin-right: 0; margin-bottom: 30px; max-width: 90%; }
 
-/* ESTILOS DEL ACORDEÓN MEJORADOS */
-.process-accordion {
-    display: flex;
-    flex-direction: column;
-    gap: 0; 
-}
-
-.accordion-item {
-    border-left: 2px solid #eaeaea; 
-    padding-left: 30px;
-    position: relative;
-    margin-bottom: 20px;
-    text-align: left; /* 👈 EVITA QUE SE CENTRE AUTOMÁTICAMENTE */
-}
-
-.accordion-item::before {
-    content: '';
-    position: absolute;
-    left: -6px; 
-    top: 15px;
-    width: 10px;
-    height: 10px;
-    background-color: #eaeaea;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
+.process-accordion { display: flex; flex-direction: column; gap: 0; }
+.accordion-item { border-left: 2px solid #eaeaea; padding-left: 30px; position: relative; margin-bottom: 20px; text-align: left; }
+.accordion-item::before { content: ''; position: absolute; left: -6px; top: 15px; width: 10px; height: 10px; background-color: #eaeaea; border-radius: 50%; transition: all 0.3s ease; }
 .accordion-item.active { border-left-color: var(--gold); }
 .accordion-item.active::before { background-color: var(--gold); box-shadow: 0 0 0 4px rgba(237, 189, 31, 0.2); }
-
-.accordion-header {
-    display: flex;
-    align-items: flex-start; /* 👈 MANTIENE EL NÚMERO ARRIBA SI EL TÍTULO ES LARGO */
-    gap: 15px;
-    cursor: pointer;
-    padding: 10px 0;
-}
-
-.accordion-header .acc-num {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: #ccc;
-    transition: color 0.3s ease;
-    flex-shrink: 0; /* 👈 BLOQUEA EL NÚMERO PARA QUE NO SE APLASTE */
-    line-height: 1.2;
-}
-
+.accordion-header { display: flex; align-items: flex-start; gap: 15px; cursor: pointer; padding: 10px 0; }
+.accordion-header .acc-num { font-size: 1.5rem; font-weight: 300; color: #ccc; transition: color 0.3s ease; flex-shrink: 0; line-height: 1.2; }
 .accordion-item.active .acc-num { color: var(--gold); font-weight: 600; }
-
-.accordion-header h4 {
-    font-size: 1.4rem;
-    color: #888;
-    margin: 0;
-    font-weight: 400;
-    transition: color 0.3s ease;
-    line-height: 1.3;
-}
-
-.accordion-item.active .accordion-header h4 {
-    color: var(--black);
-    font-weight: 600;
-}
-
-.accordion-body {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease-out;
-}
-
-.accordion-item.active .accordion-body {
-    grid-template-rows: 1fr;
-}
-
+.accordion-header h4 { font-size: 1.4rem; color: #888; margin: 0; font-weight: 400; transition: color 0.3s ease; line-height: 1.3; }
+.accordion-item.active .accordion-header h4 { color: var(--black); font-weight: 600; }
+.accordion-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease-out; }
+.accordion-item.active .accordion-body { grid-template-rows: 1fr; }
 .accordion-content { overflow: hidden; }
-
-.accordion-content p {
-    padding-top: 10px;
-    padding-bottom: 20px;
-    color: var(--dark-grey);
-    line-height: 1.6;
-    font-size: 1rem;
-}
+.accordion-content p { padding-top: 10px; padding-bottom: 20px; color: var(--dark-grey); line-height: 1.6; font-size: 1rem; }
 
 .meet-team { margin-top: 60px; }
+.team-carousel-wrapper { position: relative; width: 100%; }
+.team-arrow { display: none; background: none; border: none; color: var(--black); cursor: pointer; transition: color 0.3s; font-size: 2.5rem; z-index: 10; padding: 0 5px; }
+.team-arrow:hover { color: var(--gold); }
 .team-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
 .team-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: all 0.3s ease; }
 .team-card:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
@@ -403,13 +355,64 @@ h1, h2, h3, h4 {
     .service-card { min-width: 85vw; }
     .services-track-container { gap: 5px; }
     
-    /* ACORDEÓN EN CELULAR */
     .accordion-item { padding-left: 20px; }
     .accordion-header { gap: 10px; }
     .accordion-header h4 { font-size: 1.15rem; }
     .accordion-header .acc-num { font-size: 1.3rem; }
 
-    .team-cards { flex-direction: column; align-items: center; }
+    /* MOBILE TEAM CAROUSEL (CORRECCIÓN DE CORTE Y FLECHAS FLOTANTES) */
+    .team-carousel-wrapper { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        position: relative;
+        width: 100%;
+    }
+    
+    .team-arrow { 
+        display: flex; 
+        position: absolute;
+        top: 45%; 
+        transform: translateY(-50%);
+        font-size: 2.5rem;
+        color: var(--black);
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .team-arrow.left-arrow { left: -10px; }
+    .team-arrow.right-arrow { right: -10px; }
+
+    .team-cards { 
+        display: flex;
+        flex-direction: row; 
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; 
+        align-items: stretch;
+        padding: 10px 0 20px 0;
+        gap: 15px;
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+    }
+    .team-cards::-webkit-scrollbar { display: none; }
+    
+    .team-card { 
+        flex: 0 0 95%;
+        scroll-snap-align: center; 
+    }
+    
+    .team-img-wrapper {
+        height: 350px; 
+    }
+
     .form-row { flex-direction: column; gap: 0; }
     .careers-img { min-height: 380px; height: 380px; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
     .modern-form input, .modern-form select, .modern-form textarea { padding: 12px 15px; font-size: 0.9rem; }

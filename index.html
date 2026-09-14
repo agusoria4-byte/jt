@@ -18,7 +18,7 @@
     }
     </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
@@ -70,13 +70,13 @@
     </section>
 
     <!-- THE JT STANDARD & GALLERY -->
-   <section id="standard" class="jt-standard">
+    <section id="standard" class="jt-standard">
         <div class="container sr-fade">
             <h2>The JT Standard</h2>
             
             <h3 class="split-subtitle">
-        <span class="text-light">Your</span><span class="text-gold dynamic-text"></span><span class="cursor">|</span>
-    </h3>
+                <span class="text-light">Your</span><span class="text-gold dynamic-text"></span><span class="cursor">|</span>
+            </h3>
             
             <p class="standard-copy">At JT Protection Services, we elevate professional security through rigorous discipline, unwavering reliability, and sharp attention to detail. When your safety is in our hands, you have absolute peace of mind.</p>
         </div>
@@ -116,7 +116,7 @@
                                 <h4 class="card-title">Event Security</h4>
                                 <p class="teaser">Composed, professional coverage for private parties, galas, and VIP gatherings.</p>
                                 <div class="card-actions">
-                                    <a href="#contacto" class="btn btn-primary btn-request">Request</a>
+                                    <a href="#contacto" class="btn btn-primary btn-request" data-service="event">Request</a>
                                     <button class="flip-btn front-flip">Learn More <span>&#10227;</span></button>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@
                                 <h4 class="card-title">Residential Security</h4>
                                 <p class="teaser">Discreet protection for private residences and gated communities.</p>
                                 <div class="card-actions">
-                                    <a href="#contacto" class="btn btn-primary btn-request">Request</a>
+                                    <a href="#contacto" class="btn btn-primary btn-request" data-service="residential">Request</a>
                                     <button class="flip-btn front-flip">Learn More <span>&#10227;</span></button>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@
                                 <h4 class="card-title">Commercial Security</h4>
                                 <p class="teaser">Professional coverage that protects your property, your team, and your reputation.</p>
                                 <div class="card-actions">
-                                    <a href="#contacto" class="btn btn-primary btn-request">Request</a>
+                                    <a href="#contacto" class="btn btn-primary btn-request" data-service="commercial">Request</a>
                                     <button class="flip-btn front-flip">Learn More <span>&#10227;</span></button>
                                 </div>
                             </div>
@@ -198,12 +198,12 @@
                 <div class="service-card">
                     <div class="card-inner">
                         <div class="card-front">
-                            <img src="/public/img/servicio4.png" alt="Warehouse Security">
+                            <img src="/public/img/warehouse-security.png" alt="Warehouse Security">
                             <div class="front-overlay">
                                 <h4 class="card-title">Warehouse Security</h4>
                                 <p class="teaser">Reliable coverage for distribution centers and logistics facilities.</p>
                                 <div class="card-actions">
-                                    <a href="#contacto" class="btn btn-primary btn-request">Request</a>
+                                    <a href="#contacto" class="btn btn-primary btn-request" data-service="warehouse">Request</a>
                                     <button class="flip-btn front-flip">Learn More <span>&#10227;</span></button>
                                 </div>
                             </div>
@@ -232,7 +232,7 @@
                                 <h4 class="card-title">Construction Site Security</h4>
                                 <p class="teaser">On-site protection for active job sites and the equipment on them.</p>
                                 <div class="card-actions">
-                                    <a href="#contacto" class="btn btn-primary btn-request">Request</a>
+                                    <a href="#contacto" class="btn btn-primary btn-request" data-service="construction">Request</a>
                                     <button class="flip-btn front-flip">Learn More <span>&#10227;</span></button>
                                 </div>
                             </div>
@@ -261,7 +261,7 @@
                                 <h4 class="card-title">Emergency & Disaster Response</h4>
                                 <p class="teaser">A trusted presence before, during, and after severe weather events.</p>
                                 <div class="card-actions">
-                                    <a href="#contacto" class="btn btn-primary btn-request">Request</a>
+                                    <a href="#contacto" class="btn btn-primary btn-request" data-service="emergency">Request</a>
                                     <button class="flip-btn front-flip">Learn More <span>&#10227;</span></button>
                                 </div>
                             </div>
@@ -290,7 +290,7 @@
                                 <h4 class="card-title">Unarmed Security (General)</h4>
                                 <p class="teaser">A professional, unarmed presence for any situation that calls for one.</p>
                                 <div class="card-actions">
-                                    <a href="#contacto" class="btn btn-primary btn-request">Request</a>
+                                    <a href="#contacto" class="btn btn-primary btn-request" data-service="unarmed">Request</a>
                                     <button class="flip-btn front-flip">Learn More <span>&#10227;</span></button>
                                 </div>
                             </div>
@@ -407,41 +407,47 @@
                 <h2 class="section-title">Meet The Team</h2>
             </div>
             
-            <div class="team-cards">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img src="public/img/foto.png" alt="Alex Rivera">
+            <div class="team-carousel-wrapper">
+                <button class="arrow left-arrow team-arrow" id="team-prev">&#10094;</button>
+                
+                <div class="team-cards" id="team-track">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="public/img/foto.png" alt="Alex Rivera">
+                        </div>
+                        <div class="team-info">
+                            <h4>Alex Rivera</h4>
+                            <p>Event Security Lead</p>
+                        </div>
                     </div>
-                    <div class="team-info">
-                        <h4>Alex Rivera</h4>
-                        <p>Event Security Lead</p>
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="public/img/foto.png" alt="Jordan Lee">
+                        </div>
+                        <div class="team-info">
+                            <h4>Jordan Lee</h4>
+                            <p>Residential Security Officer</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="public/img/foto.png" alt="Morgan Diaz">
+                        </div>
+                        <div class="team-info">
+                            <h4>Morgan Diaz</h4>
+                            <p>Site Supervisor</p>
+                        </div>
                     </div>
                 </div>
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img src="public/img/foto.png" alt="Jordan Lee">
-                    </div>
-                    <div class="team-info">
-                        <h4>Jordan Lee</h4>
-                        <p>Residential Security Officer</p>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img src="public/img/foto.png" alt="Morgan Diaz">
-                    </div>
-                    <div class="team-info">
-                        <h4>Morgan Diaz</h4>
-                        <p>Site Supervisor</p>
-                    </div>
-                </div>
+
+                <button class="arrow right-arrow team-arrow" id="team-next">&#10095;</button>
             </div>
         </div>
     </section>
 
     <!-- TRABAJAR CON NOSOTROS -->
     <section id="trabajar" class="careers-section sr-bottom">
-    <div class="container container-large">
+        <div class="container container-large">
             <div class="careers-grid">
                 <!-- Columna Izquierda: Imagen -->
                 <div class="careers-image-col sr-left">
@@ -487,7 +493,6 @@
             <div class="contact-form-wrapper sr-right">
                 <form action="mailto:jtprotectionllc@gmail.com" method="post" class="modern-form main-form">
                     
-                    <!-- 👈 AQUÍ ESTÁ EL TÍTULO QUE SOLO SE VE EN CELULAR -->
                     <h3 class="mobile-form-title">Contact Us</h3>
                     
                     <div class="form-row">
@@ -502,8 +507,9 @@
                         <input type="text" placeholder="Company / Property Name">
                         <input type="text" placeholder="Location / Area" required>
                     </div>
-                    <div class="form-row">
-                        <select required>
+                    
+                    <div class="form-single">
+                        <select id="service-needed" required>
                             <option value="" disabled selected>Service Needed</option>
                             <option value="event">Event Security</option>
                             <option value="residential">Residential Security</option>
@@ -513,7 +519,6 @@
                             <option value="emergency">Emergency Response</option>
                             <option value="unarmed">Unarmed Security</option>
                         </select>
-                        <input type="text" placeholder="Duration of Services">
                     </div>
                     
                     <textarea placeholder="Tell us about your event or property..." rows="2" required></textarea>

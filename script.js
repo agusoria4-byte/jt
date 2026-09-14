@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btnNext.addEventListener('click', () => track.scrollBy({ left: 320, behavior: 'smooth' }));
         btnPrev.addEventListener('click', () => track.scrollBy({ left: -320, behavior: 'smooth' }));
     }
+    
+    // SLIDER DE NUESTRO EQUIPO (MÓVIL)
+    const teamTrack = document.getElementById('team-track');
+    const teamPrev = document.getElementById('team-prev');
+    const teamNext = document.getElementById('team-next');
+    if (teamNext && teamTrack) {
+        teamNext.addEventListener('click', () => teamTrack.scrollBy({ left: 320, behavior: 'smooth' }));
+        teamPrev.addEventListener('click', () => teamTrack.scrollBy({ left: -320, behavior: 'smooth' }));
+    }
 
     // SCROLL REVEAL
     const sr = ScrollReveal({ origin: 'bottom', distance: '50px', duration: 1000, delay: 200, reset: false });
@@ -88,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     flipButtonsFront.forEach(btn => btn.addEventListener('click', (e) => e.target.closest('.service-card').classList.add('flipped')));
     flipButtonsBack.forEach(btn => btn.addEventListener('click', (e) => e.target.closest('.service-card').classList.remove('flipped')));
 
-    // NUEVO: ACORDEÓN PARA "OUR PROCESS"
+    // ACORDEÓN PARA "OUR PROCESS"
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
@@ -104,6 +113,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Abrimos solo al que se le hizo clic
             currentItem.classList.add('active');
+        });
+    });
+
+    // AUTO-POPULATE CONTACT FORM SERVICE ON "REQUEST" BUTTON CLICK
+    const requestBtns = document.querySelectorAll('.btn-request');
+    const serviceSelect = document.getElementById('service-needed');
+
+    requestBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const serviceType = btn.getAttribute('data-service');
+            if (serviceType && serviceSelect) {
+                serviceSelect.value = serviceType;
+            }
         });
     });
 });
